@@ -1,13 +1,17 @@
 "use client";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Countup from "react-countup";
+import "react";
 
 export default function Home() {
   const [liveText, setLiveText] = useState(0);
   const [newText, setNewText] = useState(0);
   const [liveWord, setLiveWord] = useState("Welcome");
   const [newWord, setNewWord] = useState("");
+
+  useEffect(() => {
+    import("@google/model-viewer");
+  }, []);
 
   const WORD_LIST = [
     "Hello",
@@ -81,6 +85,15 @@ export default function Home() {
         style={{ cursor: "pointer", marginBottom: "10px" }}
       >
         <span>Click the box to change the Word</span>
+      </div>
+      <div className="model">
+        <model-viewer
+          src="/Optiprime_Buzz.glb"
+          alt="A 3D model"
+          auto-rotate
+          camera-controls
+          style={{ width: "100%", height: "500px" }}
+        ></model-viewer>
       </div>
     </div>
   );
